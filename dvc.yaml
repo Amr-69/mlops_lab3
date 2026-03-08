@@ -1,0 +1,27 @@
+stages:
+
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+      - preprocess.py
+    outs:
+      - data/train.csv
+      - data/test.csv
+
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - data/train.csv
+      - data/test.csv
+    outs:
+      - model.joblib
+
+  tune:
+    cmd: python tune.py
+    deps:
+      - tune.py
+      - data/train.csv
+      - data/test.csv
+    outs:
+      - model_rf_best.joblib

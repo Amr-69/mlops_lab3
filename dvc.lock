@@ -1,0 +1,58 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+    - path: preprocess.py
+      hash: md5
+      md5: ece071380508eda96994b02d309d5975
+      size: 2325
+    outs:
+    - path: data/test.csv
+      hash: md5
+      md5: ef363ae79d6926afc3047c028b432480
+      size: 3560
+    - path: data/train.csv
+      hash: md5
+      md5: ebde7e27a843ad1a2a9f88a01bb69d6e
+      size: 13818
+  train:
+    cmd: python train.py
+    deps:
+    - path: data/test.csv
+      hash: md5
+      md5: ef363ae79d6926afc3047c028b432480
+      size: 3560
+    - path: data/train.csv
+      hash: md5
+      md5: ebde7e27a843ad1a2a9f88a01bb69d6e
+      size: 13818
+    - path: train.py
+      hash: md5
+      md5: 880c129f5d387e8824a301fafceb8f3e
+      size: 2031
+    outs:
+    - path: model.joblib
+      hash: md5
+      md5: 79ddc1e1b9e4f11e975d98f3617aaf93
+      size: 2093
+  tune:
+    cmd: python tune.py
+    deps:
+    - path: data/test.csv
+      hash: md5
+      md5: ef363ae79d6926afc3047c028b432480
+      size: 3560
+    - path: data/train.csv
+      hash: md5
+      md5: ebde7e27a843ad1a2a9f88a01bb69d6e
+      size: 13818
+    - path: tune.py
+      hash: md5
+      md5: 611d5e922d40e90f8bde04082a6fae9f
+      size: 3483
+    outs:
+    - path: model_rf_best.joblib
+      hash: md5
+      md5: bd05a4468dae4c5ef88c516d95451ce6
+      size: 1437929

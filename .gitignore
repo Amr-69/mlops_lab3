@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# MLflow local tracking (use DagsHub instead)
+/mlruns/
+
+# Saved model artifacts (tracked by DVC, not Git)
+/model.joblib
+/model_rf_best.joblib
+
+# Data files (tracked by DVC, not Git)
+/data/
+
+# Environment credentials — NEVER commit this
+/.env
